@@ -5,6 +5,16 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+
+    "build:all": "ng build form-generator-library && ng build form-generator-app",
+    "build:form-generator-library": "ng build form-generator-library --watch  --configuration development",
+    "test:form-generator-library": "ng test form-generator-library",
+    "lint:form-generator-library": "ng lint form-generator-library",
+    "build:form-generator-app": "ng build form-generator-app --configuration development",
+    "test:form-generator-app": "ng test form-generator-app",
+    "lint:form-generator-app": "ng lint form-generator-app",
+
+
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

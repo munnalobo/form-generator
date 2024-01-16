@@ -1,6 +1,6 @@
 {
-  "name": "form-generator-library2",
-  "version": "0.0.2",
+  "name": "form-generator-library",
+  "version": "0.0.0",
   "peerDependencies": {
     "@angular/common": "^15.2.0",
     "@angular/core": "^15.2.0"

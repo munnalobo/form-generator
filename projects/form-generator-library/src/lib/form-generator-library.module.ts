@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { FormGeneratorLibraryComponent } from './form-generator-library.component';
-import { SomethingComponent } from './something/something.component';
+import { FormGeneratorComponent } from './form-generator/form-generator.component';
 
 
 
 @NgModule({
   declarations: [
     FormGeneratorLibraryComponent,
-    SomethingComponent
+    FormGeneratorComponent
   ],
   imports: [
   ],
   exports: [
     FormGeneratorLibraryComponent,
-    SomethingComponent
+    FormGeneratorComponent
   ]
 })
 export class FormGeneratorLibraryModule { }
