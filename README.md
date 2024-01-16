@@ -1,27 +1,145 @@
 # FormGenerator
+### Getting Started with Angular Libraries - Step-by-Step Guide
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.2.
+## Introduction
+Welcome to the world of Angular libraries! In this guide, we'll walk you through the process of creating and using Angular libraries. Whether you're a beginner or just looking for a quick refresher, this guide is designed to help you get started.
 
-## Development server
+### Prerequisites
+Before we begin, make sure you have the following prerequisites installed on your system:
+- Node.js and npm (Node Package Manager)
+  - Angular CLI (Command Line Interface)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Part 1: Creating a New Angular Project - 13th-January-2024
+1. **Create a New Angular Project**
+- Go to the [Angular official guide](https://angular.io/guide/creating-libraries) for more details.
+- Open your terminal and run the following command to create a new project without app folders:
+  ```bash
+  ng new <project-name> --no-create-application
+  ```
+  This command generates a project with essential files like `package.json` and `angular.json`.
 
-## Code scaffolding
+- **Notes**:
+  - `package.json` contains scripts and dependencies for your project.
+  - You can add and configure npm scripts in the `scripts` section.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2. **Generate a Library Component**
+- Navigate to the project directory you just created.
+- Run this command to generate a library component inside the `projects` folder:
+  ```bash
+  ng g library <library-name>
+  ```
+- **Notes**:
+  - This command adds `ng-packagr` to your `package.json`, which is used for packaging the library.
+  - The `angular.json` file is updated to include the new library under the `projects` section with `projectType` set to 'library'.
 
-## Build
+## Part 2: Using the Library in a New Angular Project
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. **Create a New Angular Project for Your Application**
+  - In a different directory, create a new Angular project:
+    ```bash
+    ng new <project-name>
+    ```
 
-## Running unit tests
+2. **Add Angular Material (Optional)**
+  - If you want to use Angular Material, run this command to add it to your project:
+    ```bash
+    ng add @angular/material
+    ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. **Build the Library**
+  - Back in your library project, build the library using this command:
+    ```bash
+    ng build <library-name> --configuration development
+    ```
+    This uses the development configuration specified in `angular.json` for the library.
 
-## Running end-to-end tests
+4. **Pack the Library**
+  - Navigate to the <library-name> in the `dist` folder within your library project.
+  - Pack the library using npm:
+    ```bash
+    cd dist/<library-name>
+    npm pack
+    ```
+    This creates a .tgz file that you can use to install the library in your application.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+5. **Install the Library in Your Application**
+  - Copy the file path of the .tgz file created in the previous step.
+  - Run this command in your Angular application directory to install the library:
+    ```bash
+    npm i <dist-tgz-file-path>
+    ```
 
-## Further help
+## Part 3: Using a Component from the Library in Your Application
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. **Update ngModules**
+  - Get the module name from your library and add it to the import section of your application's module.
+
+  - **Notes**:
+    - Ensure that the import points to the library and not a relative path (e.g., "../../path").
+
+2. **Use the Library Component**
+  - In your parent component's HTML file, use the library component by its selector or tag-name.
+
+## Part 4: Personal Notes - Routing
+
+- **Creating a New Route**
+  - In your application's `AppRoutingModule`, add the following route to the `routes` array:
+    ```javascript
+    { path: '', component: HelloComponent }
+    ```
+    This will route to the `HelloComponent` when no path is specified (e.g., http://localhost:4200).
+
+- **Displaying the Component**
+  - To display the component, use `<router-outlet></router-outlet>` wherever needed in your application.
+
+---
+
+## Part 5: Using Created Component from Library in Project - 14-January-24
+- **Creating a New Component in Your Library**
+
+1. Navigate to the library's 'lib' folder.
+    ```
+    cd projects/<library-name>/src/lib
+    ```
+2. Generate a new component within your library.
+   ```
+   ng g c <component-name>
+   ```
+
+- **Updating Library Exports and Modules**
+
+1. Add the newly created component to the exports in the 'public-api.ts' file
+2. Update the ngModule exports section in the '.module.ts' file of your library.
+
+- **Rebuilding the Library**
+
+1. Delete the 'dist' folder from your library.
+2. Recreate the 'dist' folder by following the previous steps.
+3. re-pack the library by following the previous steps to generate `.tgz` file.
+
+- **Reinstalling the Library in Your Angular Project**
+
+1. Delete the library from your Angular project's node_modules folder.
+2. Reinstall the library in your project by following the previous installation steps.
+
+- **Using the New Component in Your Project**
+
+1. You can now use the newly created component from the library in your parent component's HTML by using its selector or tag name.
+
+## Part 6: If You Encounter Errors with the New Component:
+
+1. Delete the library from your Angular project.
+2. Delete the 'dist' folder from your library.
+3. Clear the cache on both the library and your project.
+    ```
+    npm cache clear --force
+    ```
+4. Change the library version and name in your library's 'package.json'.
+  - For example:
+    - Change `"name": "your-library"` to `"name": "your-library2"`
+    - Change `"version": "0.0.1"` to `"version": "0.0.2"`
+
+5. Follow the previous steps to recreate the 'dist' folder and reinstall the library in your project.
+
+
+I hope this step-by-step guide helps you understand and implement Angular libraries effectively. If you have any questions or need further assistance, please feel free to ask. Happy coding!
