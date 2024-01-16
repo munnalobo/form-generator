@@ -5,7 +5,6 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-
     "build:all": "ng build form-generator-library && ng build form-generator-app",
     "build:form-generator-library": "ng build form-generator-library --watch  --configuration development",
     "test:form-generator-library": "ng test form-generator-library",
@@ -13,29 +12,27 @@
     "build:form-generator-app": "ng build form-generator-app --configuration development",
     "test:form-generator-app": "ng test form-generator-app",
     "lint:form-generator-app": "ng lint form-generator-app",
-
-
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^15.2.0",
-    "@angular/common": "^15.2.0",
-    "@angular/compiler": "^15.2.0",
-    "@angular/core": "^15.2.0",
-    "@angular/forms": "^15.2.0",
-    "@angular/platform-browser": "^15.2.0",
-    "@angular/platform-browser-dynamic": "^15.2.0",
-    "@angular/router": "^15.2.0",
+    "@angular/animations": "^16.2.12",
+    "@angular/common": "^16.2.12",
+    "@angular/compiler": "^16.2.12",
+    "@angular/core": "^16.2.12",
+    "@angular/forms": "^16.2.12",
+    "@angular/platform-browser": "^16.2.12",
+    "@angular/platform-browser-dynamic": "^16.2.12",
+    "@angular/router": "^16.2.12",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.12.0"
+    "zone.js": "~0.13.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.2.10",
     "@angular/cli": "~15.2.2",
-    "@angular/compiler-cli": "^15.2.0",
+    "@angular/compiler-cli": "^16.2.12",
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
