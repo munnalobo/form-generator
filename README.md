@@ -141,5 +141,45 @@ Before we begin, make sure you have the following prerequisites installed on you
 
 5. Follow the previous steps to recreate the 'dist' folder and reinstall the library in your project.
 
+## Part 7: Create and Use Application in Library - 16-January-24
+
+- **Creating an Application in Your Library**
+
+1. Navigate to your workspace directory and run the following command to create an application within your library:
+    ```
+    ng g application <app-name>
+    ```
+
+- **Add Angular Material to Library and Project**
+1. To use Angular Material, add it to both your library and project using the following command:
+    ```
+    ng add @angular/material
+    ```
+
+2. Check Angular Versions in package.json
+  - Verify the Angular versions in your project's `package.json` file.
+  - Update them if necessary to ensure compatibility.
+
+## Part 8: Watching for Changes
+
+- **Watch for Changes to Avoid Building the Library Repeatedly**
+1. Run the following command to watch for changes in your library:
+    ```
+    ng build <library-name> --watch --configuration development
+    ```
+  - This command allows you to monitor changes without rebuilding the library every time you make an update.
+
+## Part 9: Creating a Component in Your Application
+
+- **Create a Component in Your Application**
+1. Use the following command to generate a component in your application project:
+    ```
+    ng g c <component-name> --project=<app-name>
+    ```
+  - Now you can use the application and library together as previously described, even with an external application.
+
+---
+
+
 
 I hope this step-by-step guide helps you understand and implement Angular libraries effectively. If you have any questions or need further assistance, please feel free to ask. Happy coding!
