@@ -141,6 +141,7 @@ Before we begin, make sure you have the following prerequisites installed on you
 
 5. Follow the previous steps to recreate the 'dist' folder and reinstall the library in your project.
 
+---
 ## Part 7: Create and Use Application in Library - 16-January-24
 
 - **Creating an Application in Your Library**
@@ -179,7 +180,5 @@ Before we begin, make sure you have the following prerequisites installed on you
   - Now you can use the application and library together as previously described, even with an external application.
 
 ---
-
-
 
 I hope this step-by-step guide helps you understand and implement Angular libraries effectively. If you have any questions or need further assistance, please feel free to ask. Happy coding!
