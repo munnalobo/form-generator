@@ -1,1 +1,19 @@
-<label>Pick your favorite color</label>
+@for (data of formMetaData; track data) {
+  <label>{{ data.heading }}</label>
+  <mat-radio-group
+    class="metadata-form"
+    [(ngModel)]="data.selectedValue">
+    <div class="radio-options">
+      @for (radioButtonOption of data.radioButtonOptions; track radioButtonOption) {
+        <mat-radio-button color="primary" [value]="radioButtonOption.value">{{ radioButtonOption.displayName }}
+        </mat-radio-button>
+      }
+    </div>
+  </mat-radio-group>
+}
+
+
+<!--      []     ->  @input in typesscript of chlid - passing data from parent -> child      -->
+<!--      ()     ->  @output in typesscript of chlid - passing data from child -> parent     -->
+<!--      [()]   ->  two way biding to bind a variable from parent to child and to use this we need naming convention as follows @input <variableName>    @Output <variableName>Change -->
+

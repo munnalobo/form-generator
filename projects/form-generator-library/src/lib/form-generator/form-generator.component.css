@@ -1,0 +1,8 @@
+.metadata-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-options {
+  display: flex;
+}
