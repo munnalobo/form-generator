@@ -1,18 +1,18 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {RadioButtonComponent} from './radio-button.component';
+import {TextInputComponent} from './text-input.component';
 
-describe('RadioButtonComponent', () => {
-  let component: RadioButtonComponent;
-  let fixture: ComponentFixture<RadioButtonComponent>;
+describe('TextInputComponent', () => {
+  let component: TextInputComponent;
+  let fixture: ComponentFixture<TextInputComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RadioButtonComponent]
+      imports: [TextInputComponent]
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(RadioButtonComponent);
+    fixture = TestBed.createComponent(TextInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

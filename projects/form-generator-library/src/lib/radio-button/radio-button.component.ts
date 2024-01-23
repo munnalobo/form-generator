@@ -1,27 +1,32 @@
-import {Component} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {MatRadioModule} from "@angular/material/radio";
+import {FormsModule} from "@angular/forms";
+import {RadioButtonClusterMetadata} from "../models/radio-button-cluster-metadata";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'lib-radio-button',
   standalone: true,
-  imports: [],
+  imports: [
+    FormsModule,
+    MatRadioModule,
+    NgIf],
   templateUrl: './radio-button.component.html',
   styleUrl: './radio-button.component.css'
 })
-export class RadioButtonComponent {
+export class RadioButtonComponent implements OnInit {
+  @Input() public radioButtonMetadata: RadioButtonClusterMetadata;
+  @Input() overrideData: any;
 
+  selectedValuePath: string;
+  selectedValue: any;
 
-}
+  ngOnInit(): void {
+    this.selectedValuePath = this.radioButtonMetadata.selectedValuePath;
+    this.selectedValue = this.overrideData[this.selectedValuePath]
+  }
 
-export interface RadioButtonMetadata {
-  heading: string;
-  toolTip: string;
-  mandatoryField: boolean;
-  type: string;
-  radioButtonOptions: RadioButtonOption[];
-  selectedValue?: boolean | string;
-}
-
-export interface RadioButtonOption {
-  displayName: string;
-  value: boolean;
+  updateSelectedValue(selectedValue: any) {
+    this.overrideData[this.selectedValuePath] = selectedValue;
+  }
 }

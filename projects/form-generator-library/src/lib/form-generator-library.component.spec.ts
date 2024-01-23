@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FormGeneratorLibraryComponent } from './form-generator-library.component';
+import {FormGeneratorLibraryComponent} from './form-generator-library.component';
 
 describe('FormGeneratorLibraryComponent', () => {
   let component: FormGeneratorLibraryComponent;
@@ -8,9 +8,9 @@ describe('FormGeneratorLibraryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormGeneratorLibraryComponent ]
+      declarations: [FormGeneratorLibraryComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(FormGeneratorLibraryComponent);
     component = fixture.componentInstance;

@@ -1,1 +1,13 @@
-<p>radio-button works!</p>
+<div *ngIf="radioButtonMetadata!=undefined">
+  <label>{{ radioButtonMetadata?.heading }}</label>
+  <mat-radio-group
+    [(ngModel)]="selectedValue"
+    (ngModelChange)="updateSelectedValue($event)">
+    <div class="radio-options">
+      @for (radioButtonOption of radioButtonMetadata.radioButtonOptions; track radioButtonOption) {
+        <mat-radio-button color="primary" [value]="radioButtonOption.value">{{ radioButtonOption.displayName }}
+        </mat-radio-button>
+      }
+    </div>
+  </mat-radio-group>
+</div>

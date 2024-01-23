@@ -1,43 +1,52 @@
-import {Component} from '@angular/core';
-import {RadioButtonMetadata} from "../../../../form-generator-library/src/lib/radio-button/radio-button.component";
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {RadioButtonClusterMetadata, TextInputMetadata} from "form-generator-library";
+import {RadioButtonOption} from "../../../../form-generator-library/src/lib/models/radio-button-option";
+import {ComponentType} from "../../../../form-generator-library/src/lib/models/component-type";
 
 @Component({
-  selector: 'app-demo', templateUrl: './demo.component.html', styleUrls: ['./demo.component.scss']
+  selector: 'app-demo',
+  templateUrl: './demo.component.html',
+  styleUrls: ['./demo.component.scss']
 })
-export class DemoComponent {
+export class DemoComponent implements OnChanges, OnInit {
+  allowLimitOverrides: Boolean = false;
+  // Came from BackEnd
   overrideData: any = {
     mailOrderBulkUp: true,
-    allowLimitOverrides: false
+    allowLimitOverrides: false,
+    contactNumber: "+xx xxx-xxx-xxxx"
   };
+  formMetaData: (RadioButtonClusterMetadata | TextInputMetadata)[] = [
+    this.clientMailOrderRadioButton(),
+    this.limitNumberOverrideRadioButton(),
+    this.mailOrderBulkUpTextInput()];
 
 
+  ngOnInit(): void {
+  }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("changes", changes);
+  }
 
-  formMetaData: RadioButtonMetadata[] = [{
-    heading: "Does client have mail order bulk up?",
-    toolTip: "clint bulk up.",
-    mandatoryField: true,
-    type: "RADIO_BUTTON",
-    radioButtonOptions: [{
-      displayName: "Yes",
-      value: true
-    }, {
-      displayName: "No",
-      value: false
-    }],
-    selectedValue: this.overrideData.mailOrderBulkUp
-  }, {
-    heading: "Is there a limit to the number of Overrides allowed?",
-    toolTip: "clint bulk up.",
-    mandatoryField: true,
-    type: "RADIO_BUTTON",
-    radioButtonOptions: [{
-      displayName: "Yes",
-      value: true
-    }, {
-      displayName: "No",
-      value: false
-    }],
-    selectedValue: this.overrideData.allowLimitOverrides
-  }];
+  clientMailOrderRadioButton(): RadioButtonClusterMetadata {
+    const radioButtonOptionYes = new RadioButtonOption('Yes', true);
+    const radioButtonOptionNo = new RadioButtonOption('No', false);
+    return new RadioButtonClusterMetadata("Does client have mail order bulk up?", "clint bulk up.", true, ComponentType.RADIO_BUTTON, 'mailOrderBulkUp', () => true, [
+      radioButtonOptionYes,
+      radioButtonOptionNo]);
+  }
+
+  limitNumberOverrideRadioButton(): RadioButtonClusterMetadata {
+    const radioButtonOptionYes = new RadioButtonOption('Yes', true);
+    const radioButtonOptionNo = new RadioButtonOption('No', false);
+    return new RadioButtonClusterMetadata("Is there a limit to the number of Overrides allowed?", "clint bulk up.", true, ComponentType.RADIO_BUTTON, 'allowLimitOverrides', () => true, [
+      radioButtonOptionYes,
+      radioButtonOptionNo]);
+  }
+
+  mailOrderBulkUpTextInput(): TextInputMetadata {
+    return new TextInputMetadata("Contact Number.", "clint bulk up.", true, ComponentType.TEXT_INPUT, 'contactNumber', () => this.overrideData.allowLimitOverrides === true, "somePlaceHolder");
+  }
+
 }

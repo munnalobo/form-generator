@@ -1,16 +1,22 @@
 # FormGenerator
+
 ### Getting Started with Angular Libraries - Step-by-Step Guide
 
 ## Introduction
+
 Welcome to the world of Angular libraries! In this guide, we'll walk you through the process of creating and using Angular libraries. Whether you're a beginner or just looking for a quick refresher, this guide is designed to help you get started.
 
 ### Prerequisites
+
 Before we begin, make sure you have the following prerequisites installed on your system:
+
 - Node.js and npm (Node Package Manager)
   - Angular CLI (Command Line Interface)
 
 ## Part 1: Creating a New Angular Project - 13th-January-2024
+
 1. **Create a New Angular Project**
+
 - Go to the [Angular official guide](https://angular.io/guide/creating-libraries) for more details.
 - Open your terminal and run the following command to create a new project without app folders:
   ```bash
@@ -23,6 +29,7 @@ Before we begin, make sure you have the following prerequisites installed on you
   - You can add and configure npm scripts in the `scripts` section.
 
 2. **Generate a Library Component**
+
 - Navigate to the project directory you just created.
 - Run this command to generate a library component inside the `projects` folder:
   ```bash
@@ -35,50 +42,57 @@ Before we begin, make sure you have the following prerequisites installed on you
 ## Part 2: Using the Library in a New Angular Project
 
 1. **Create a New Angular Project for Your Application**
-  - In a different directory, create a new Angular project:
-    ```bash
-    ng new <project-name>
-    ```
+
+- In a different directory, create a new Angular project:
+  ```bash
+  ng new <project-name>
+  ```
 
 2. **Add Angular Material (Optional)**
-  - If you want to use Angular Material, run this command to add it to your project:
-    ```bash
-    ng add @angular/material
-    ```
+
+- If you want to use Angular Material, run this command to add it to your project:
+  ```bash
+  ng add @angular/material
+  ```
 
 3. **Build the Library**
-  - Back in your library project, build the library using this command:
-    ```bash
-    ng build <library-name> --configuration development
-    ```
-    This uses the development configuration specified in `angular.json` for the library.
+
+- Back in your library project, build the library using this command:
+  ```bash
+  ng build <library-name> --configuration development
+  ```
+  This uses the development configuration specified in `angular.json` for the library.
 
 4. **Pack the Library**
-  - Navigate to the <library-name> in the `dist` folder within your library project.
-  - Pack the library using npm:
-    ```bash
-    cd dist/<library-name>
-    npm pack
-    ```
-    This creates a .tgz file that you can use to install the library in your application.
+
+- Navigate to the <library-name> in the `dist` folder within your library project.
+- Pack the library using npm:
+  ```bash
+  cd dist/<library-name>
+  npm pack
+  ```
+  This creates a .tgz file that you can use to install the library in your application.
 
 5. **Install the Library in Your Application**
-  - Copy the file path of the .tgz file created in the previous step.
-  - Run this command in your Angular application directory to install the library:
-    ```bash
-    npm i <dist-tgz-file-path>
-    ```
+
+- Copy the file path of the .tgz file created in the previous step.
+- Run this command in your Angular application directory to install the library:
+  ```bash
+  npm i <dist-tgz-file-path>
+  ```
 
 ## Part 3: Using a Component from the Library in Your Application
 
 1. **Update ngModules**
-  - Get the module name from your library and add it to the import section of your application's module.
 
-  - **Notes**:
-    - Ensure that the import points to the library and not a relative path (e.g., "../../path").
+- Get the module name from your library and add it to the import section of your application's module.
+
+- **Notes**:
+  - Ensure that the import points to the library and not a relative path (e.g., "../../path").
 
 2. **Use the Library Component**
-  - In your parent component's HTML file, use the library component by its selector or tag-name.
+
+- In your parent component's HTML file, use the library component by its selector or tag-name.
 
 ## Part 4: Personal Notes - Routing
 
@@ -95,6 +109,7 @@ Before we begin, make sure you have the following prerequisites installed on you
 ---
 
 ## Part 5: Using Created Component from Library in Project - 14-January-24
+
 - **Creating a New Component in Your Library**
 
 1. Navigate to the library's 'lib' folder.
@@ -135,13 +150,15 @@ Before we begin, make sure you have the following prerequisites installed on you
     npm cache clear --force
     ```
 4. Change the library version and name in your library's 'package.json'.
-  - For example:
-    - Change `"name": "your-library"` to `"name": "your-library2"`
-    - Change `"version": "0.0.1"` to `"version": "0.0.2"`
+
+- For example:
+  - Change `"name": "your-library"` to `"name": "your-library2"`
+  - Change `"version": "0.0.1"` to `"version": "0.0.2"`
 
 5. Follow the previous steps to recreate the 'dist' folder and reinstall the library in your project.
 
 ---
+
 ## Part 7: Create and Use Application in Library - 16-January-24
 
 - **Creating an Application in Your Library**
@@ -152,32 +169,38 @@ Before we begin, make sure you have the following prerequisites installed on you
     ```
 
 - **Add Angular Material to Library and Project**
+
 1. To use Angular Material, add it to both your library and project using the following command:
     ```
     ng add @angular/material
     ```
 
 2. Check Angular Versions in package.json
-  - Verify the Angular versions in your project's `package.json` file.
-  - Update them if necessary to ensure compatibility.
+
+- Verify the Angular versions in your project's `package.json` file.
+- Update them if necessary to ensure compatibility.
 
 ## Part 8: Watching for Changes
 
 - **Watch for Changes to Avoid Building the Library Repeatedly**
+
 1. Run the following command to watch for changes in your library:
     ```
     ng build <library-name> --watch --configuration development
     ```
-  - This command allows you to monitor changes without rebuilding the library every time you make an update.
+
+- This command allows you to monitor changes without rebuilding the library every time you make an update.
 
 ## Part 9: Creating a Component in Your Application
 
 - **Create a Component in Your Application**
+
 1. Use the following command to generate a component in your application project:
     ```
     ng g c <component-name> --project=<app-name>
     ```
-  - Now you can use the application and library together as previously described, even with an external application.
+
+- Now you can use the application and library together as previously described, even with an external application.
 
 ---
 

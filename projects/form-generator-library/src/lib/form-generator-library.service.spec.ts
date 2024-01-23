@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { FormGeneratorLibraryService } from './form-generator-library.service';
+import {FormGeneratorLibraryService} from './form-generator-library.service';
 
 describe('FormGeneratorLibraryService', () => {
   let service: FormGeneratorLibraryService;
