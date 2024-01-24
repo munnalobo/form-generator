@@ -1,8 +1,28 @@
 @for (data of formMetaData; track data) {
+  <ng-container *ngTemplateOutlet="formArrayTemplate; context: {$implicit: data, data: data}"></ng-container>
+}
+
+<ng-template #formArrayTemplate let-data="data">
+  @if (Array.isArray(data)) {
+    <div class="group-things">
+      @for (dataArrayElement of getDataArray(data); track dataArrayElement) {
+        <ng-container
+          *ngTemplateOutlet="formArrayTemplate;
+        context: {$implicit: dataArrayElement, data: dataArrayElement}">
+        </ng-container>
+      }
+    </div>
+  } @else {
+    <ng-container *ngTemplateOutlet="formTemplate; context: {$implicit: data, data: data}"></ng-container>
+  }
+</ng-template>
+
+<ng-template #formTemplate let-data="data">
   <lib-radio-button *ngIf="data.type === ComponentType.RADIO_BUTTON"
                     [radioButtonMetadata]="getDataWithType(data)"
                     [overrideData]="overrideData"></lib-radio-button>
   <lib-text-input *ngIf="data.type === ComponentType.TEXT_INPUT"
                   [textInputMetadata]="getDataWithType(data)">
   </lib-text-input>
-}
+</ng-template>
+

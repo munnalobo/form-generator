@@ -8,3 +8,7 @@ export class UtilsService {
   constructor() {
   }
 }
+
+export const getDataArray = (data: any[]): any[] => {
+  return data;
+}

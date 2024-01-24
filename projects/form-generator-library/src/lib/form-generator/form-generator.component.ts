@@ -2,7 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ComponentType} from "../models/component-type";
 import {RadioButtonClusterMetadata} from "../models/radio-button-cluster-metadata";
 import {TextInputMetadata} from "../models/text-input-metadata";
+import {getDataArray} from "../helpers/utils.service";
 
+
+export type AcceptableComponentTypes = (RadioButtonClusterMetadata | TextInputMetadata);
 
 @Component({
   selector: 'form-generator',
@@ -10,14 +13,15 @@ import {TextInputMetadata} from "../models/text-input-metadata";
   styleUrls: ['./form-generator.component.css'],
 })
 export class FormGeneratorComponent implements OnInit {
-  @Input() formMetaData!: (RadioButtonClusterMetadata | TextInputMetadata)[];
+  @Input() formMetaData!: (AcceptableComponentTypes | AcceptableComponentTypes[])[];
   @Input() overrideData!: any;
   protected readonly ComponentType = ComponentType;
+  protected readonly Array = Array;
 
   ngOnInit(): void {
   }
 
-  getDataWithType(formFieldMetadata: RadioButtonClusterMetadata | TextInputMetadata) {
+  getDataWithType(formFieldMetadata: AcceptableComponentTypes) {
     let returnValue: any;
 
     if (formFieldMetadata.type === ComponentType.RADIO_BUTTON) {
@@ -30,5 +34,6 @@ export class FormGeneratorComponent implements OnInit {
     return returnValue;
   }
 
-
+  protected readonly getDataArray = getDataArray;
 }
+

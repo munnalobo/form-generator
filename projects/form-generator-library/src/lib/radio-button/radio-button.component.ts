@@ -3,6 +3,7 @@ import {MatRadioModule} from "@angular/material/radio";
 import {FormsModule} from "@angular/forms";
 import {RadioButtonClusterMetadata} from "../models/radio-button-cluster-metadata";
 import {NgIf} from "@angular/common";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @Component({
   selector: 'lib-radio-button',
@@ -10,6 +11,7 @@ import {NgIf} from "@angular/common";
   imports: [
     FormsModule,
     MatRadioModule,
+    BrowserAnimationsModule,
     NgIf],
   templateUrl: './radio-button.component.html',
   styleUrl: './radio-button.component.css'

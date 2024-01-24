@@ -1,5 +1,5 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {RadioButtonClusterMetadata, TextInputMetadata} from "form-generator-library";
+import {AcceptableComponentTypes, RadioButtonClusterMetadata, TextInputMetadata} from "form-generator-library";
 import {RadioButtonOption} from "../../../../form-generator-library/src/lib/models/radio-button-option";
 import {ComponentType} from "../../../../form-generator-library/src/lib/models/component-type";
 
@@ -16,10 +16,12 @@ export class DemoComponent implements OnChanges, OnInit {
     allowLimitOverrides: false,
     contactNumber: "+xx xxx-xxx-xxxx"
   };
-  formMetaData: (RadioButtonClusterMetadata | TextInputMetadata)[] = [
+  formMetaData: (AcceptableComponentTypes | AcceptableComponentTypes[])[] = [
     this.clientMailOrderRadioButton(),
     this.limitNumberOverrideRadioButton(),
-    this.mailOrderBulkUpTextInput()];
+    [
+      this.mailOrderBulkUpTextInput(),
+      this.mailOrderBulkUpTextInput2()]];
 
 
   ngOnInit(): void {
@@ -46,6 +48,10 @@ export class DemoComponent implements OnChanges, OnInit {
   }
 
   mailOrderBulkUpTextInput(): TextInputMetadata {
+    return new TextInputMetadata("Contact Number.", "clint bulk up.", true, ComponentType.TEXT_INPUT, 'contactNumber', () => this.overrideData.allowLimitOverrides === true, "somePlaceHolder");
+  }
+
+  mailOrderBulkUpTextInput2(): TextInputMetadata {
     return new TextInputMetadata("Contact Number.", "clint bulk up.", true, ComponentType.TEXT_INPUT, 'contactNumber', () => this.overrideData.allowLimitOverrides === true, "somePlaceHolder");
   }
 

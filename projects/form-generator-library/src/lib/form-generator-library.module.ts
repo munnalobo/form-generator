@@ -9,6 +9,7 @@ import {MatInputModule} from "@angular/material/input";
 import {RadioButtonComponent} from "./radio-button/radio-button.component";
 import {TextInputComponent} from "./text-input/text-input.component";
 import {FormFieldMetadata} from "./models/form-field-metadata";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {FormFieldMetadata} from "./models/form-field-metadata";
     NgIf,
     MatInputModule,
     RadioButtonComponent,
+    BrowserAnimationsModule,
     TextInputComponent
   ],
   exports: [
