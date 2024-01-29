@@ -1,7 +1,7 @@
 <div *ngIf="textInputMetadata.displayCondition()" class="text-field">
   <label>{{ textInputMetadata.heading }}</label>
   <mat-form-field>
-    <input matInput [(ngModel)]=textInputMetadata.selectedValuePath
-           [placeholder]=textInputMetadata.placeHolder>
+    <input [(ngModel)]=textInputMetadata.selectedValuePath [placeholder]=textInputMetadata.placeHolder
+           matInput>
   </mat-form-field>
 </div>

@@ -8,29 +8,22 @@ import {NgIf} from "@angular/common";
 import {MatInputModule} from "@angular/material/input";
 import {RadioButtonComponent} from "./radio-button/radio-button.component";
 import {TextInputComponent} from "./text-input/text-input.component";
-import {FormFieldMetadata} from "./models/form-field-metadata";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 
 @NgModule({
-  declarations: [
-    FormGeneratorLibraryComponent,
-    FormGeneratorComponent
-  ],
-  imports: [
-    MatButtonModule,
-    MatRadioModule,
-    FormsModule,
-    NgIf,
-    MatInputModule,
-    RadioButtonComponent,
-    BrowserAnimationsModule,
-    TextInputComponent
-  ],
-  exports: [
-    FormGeneratorLibraryComponent,
-    FormGeneratorComponent,
-  ]
+  declarations: [FormGeneratorLibraryComponent, FormGeneratorComponent],
+  imports: [MatButtonModule,
+            MatRadioModule,
+            FormsModule,
+            NgIf,
+            MatInputModule,
+            RadioButtonComponent,
+            BrowserAnimationsModule,
+            TextInputComponent,
+            MatExpansionModule],
+  exports: [FormGeneratorLibraryComponent, FormGeneratorComponent,]
 })
 export class FormGeneratorLibraryModule {
 }

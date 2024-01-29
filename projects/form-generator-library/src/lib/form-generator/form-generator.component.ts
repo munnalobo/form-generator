@@ -13,12 +13,26 @@ export type AcceptableComponentTypes = (RadioButtonClusterMetadata | TextInputMe
   styleUrls: ['./form-generator.component.css'],
 })
 export class FormGeneratorComponent implements OnInit {
+
   @Input() formMetaData!: (AcceptableComponentTypes | AcceptableComponentTypes[])[];
   @Input() overrideData!: any;
+  @Input() formGroupedMetaData: Map<string, (AcceptableComponentTypes | AcceptableComponentTypes[])[]>;
+  errorMessage: string;
   protected readonly ComponentType = ComponentType;
+  protected readonly getDataArray = getDataArray;
   protected readonly Array = Array;
 
+  constructor() {
+  }
+
   ngOnInit(): void {
+    if (this.formMetaData !== undefined && this.formGroupedMetaData !== undefined) {
+      this.errorMessage = 'Only formMetaData or formGroupedMetaData should be provided.';
+      throw new Error(this.errorMessage)
+    } else if (this.formMetaData === undefined && this.formGroupedMetaData === undefined) {
+      this.errorMessage = 'At least one of formMetaData or formGroupedMetaData should be provided.';
+      throw new Error(this.errorMessage)
+    }
   }
 
   getDataWithType(formFieldMetadata: AcceptableComponentTypes) {
@@ -33,7 +47,5 @@ export class FormGeneratorComponent implements OnInit {
     }
     return returnValue;
   }
-
-  protected readonly getDataArray = getDataArray;
 }
 

@@ -9,11 +9,10 @@ export class RadioButtonClusterMetadata extends FormFieldMetadata {
   constructor(heading: string,
               toolTip: string,
               mandatoryField: boolean,
-              type: ComponentType,
               selectedValuePath: string,
-              displayCondition: () => boolean,
-              radioButtonOptions: RadioButtonOption[]) {
-    super(heading, toolTip, mandatoryField, type, selectedValuePath, displayCondition);
+              radioButtonOptions: RadioButtonOption[],
+              displayCondition?: () => boolean) {
+    super(heading, toolTip, mandatoryField, ComponentType.RADIO_BUTTON, selectedValuePath, displayCondition);
     this.radioButtonOptions = radioButtonOptions;
   }
 }

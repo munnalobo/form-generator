@@ -1,28 +1,50 @@
-@for (data of formMetaData; track data) {
-  <ng-container *ngTemplateOutlet="formArrayTemplate; context: {$implicit: data, data: data}"></ng-container>
-}
-
-<ng-template #formArrayTemplate let-data="data">
-  @if (Array.isArray(data)) {
-    <div class="group-things">
-      @for (dataArrayElement of getDataArray(data); track dataArrayElement) {
-        <ng-container
-          *ngTemplateOutlet="formArrayTemplate;
-        context: {$implicit: dataArrayElement, data: dataArrayElement}">
-        </ng-container>
-      }
-    </div>
-  } @else {
-    <ng-container *ngTemplateOutlet="formTemplate; context: {$implicit: data, data: data}"></ng-container>
+@if (this.errorMessage) {
+  <h2>{{ errorMessage }}</h2>
+} @else {
+  @if (formGroupedMetaData) {
+    @for (groupName of formGroupedMetaData.keys(); track groupName) {
+      <mat-accordion>
+        <mat-expansion-panel expanded=true>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h2>{{ groupName }}</h2>
+            </mat-panel-title>
+            <mat-panel-description>
+              please provide description
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          @for (data of formGroupedMetaData.get(groupName); track data) {
+            <ng-container *ngTemplateOutlet="formArrayTemplate; context: {$implicit: data, data: data}"></ng-container>
+          }
+        </mat-expansion-panel>
+      </mat-accordion>
+    }
   }
-</ng-template>
+  @for (data of formMetaData; track data) {
+    <ng-container *ngTemplateOutlet="formArrayTemplate; context: {$implicit: data, data: data}"></ng-container>
+  }
 
-<ng-template #formTemplate let-data="data">
-  <lib-radio-button *ngIf="data.type === ComponentType.RADIO_BUTTON"
-                    [radioButtonMetadata]="getDataWithType(data)"
-                    [overrideData]="overrideData"></lib-radio-button>
-  <lib-text-input *ngIf="data.type === ComponentType.TEXT_INPUT"
-                  [textInputMetadata]="getDataWithType(data)">
-  </lib-text-input>
-</ng-template>
+  <ng-template #formArrayTemplate let-data="data">
+    @if (Array.isArray(data)) {
+      <div class="group-things">
+        @for (dataArrayElement of getDataArray(data); track dataArrayElement) {
+          <ng-container
+            *ngTemplateOutlet="formArrayTemplate;
+        context: {$implicit: dataArrayElement, data: dataArrayElement}">
+          </ng-container>
+        }
+      </div>
+    } @else {
+      <ng-container *ngTemplateOutlet="formTemplate; context: {$implicit: data, data: data}"></ng-container>
+    }
+  </ng-template>
 
+  <ng-template #formTemplate let-data="data">
+    <lib-radio-button *ngIf="data.type === ComponentType.RADIO_BUTTON"
+                      [overrideData]="overrideData"
+                      [radioButtonMetadata]="getDataWithType(data)"></lib-radio-button>
+    <lib-text-input *ngIf="data.type === ComponentType.TEXT_INPUT"
+                    [textInputMetadata]="getDataWithType(data)">
+    </lib-text-input>
+  </ng-template>
+}
