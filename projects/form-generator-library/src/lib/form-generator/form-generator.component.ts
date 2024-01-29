@@ -10,9 +10,12 @@ import {TextInputMetadata} from "../models/text-input-metadata";
   styleUrls: ['./form-generator.component.css'],
 })
 export class FormGeneratorComponent implements OnInit {
-  @Input() formMetaData!: (RadioButtonClusterMetadata | TextInputMetadata)[];
+  @Input() formMetaData!: (RadioButtonClusterMetadata | TextInputMetadata | (RadioButtonClusterMetadata | TextInputMetadata)[])[];
   @Input() overrideData!: any;
+  display1 = true
+
   protected readonly ComponentType = ComponentType;
+  protected readonly Array = Array;
 
   ngOnInit(): void {
   }
@@ -30,5 +33,7 @@ export class FormGeneratorComponent implements OnInit {
     return returnValue;
   }
 
-
+  convertToTypeArray(value: any): any[] {
+    return value as any[];
+  }
 }

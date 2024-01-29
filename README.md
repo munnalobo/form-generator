@@ -202,6 +202,24 @@ Before we begin, make sure you have the following prerequisites installed on you
 
 - Now you can use the application and library together as previously described, even with an external application.
 
+## Part 10: Input Display - 29-January-24
+
+- **Simultaneous Input Display**
+1. To make multiple inputs appear simultaneously, ensure that you import the Browser Animation Module.
+
+- **Grouping Text Inputs**
+1. In your code, consider modifying the 'formMetaData' type as follows:
+    ```typescript
+    formMetaData: (RadioButtonClusterMetadata | TextInputMetadata | (RadioButtonClusterMetadata | TextInputMetadata)[])[]
+    ```
+    This change will allow you to group text inputs effectively.
+
+- **Checking for Array**
+1. Use the `@if` directive to check whether the 'data' variable is an array or not. You can achieve this by using the `Array.isArray()` method as a condition.
+
+- **Iterating through an Array**
+1. If the 'data' is indeed an array, utilize the `@for` directive to iterate through its elements.
+
 ---
 
 I hope this step-by-step guide helps you understand and implement Angular libraries effectively. If you have any questions or need further assistance, please feel free to ask. Happy coding!
