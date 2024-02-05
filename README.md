@@ -221,5 +221,24 @@ Before we begin, make sure you have the following prerequisites installed on you
 1. If the 'data' is indeed an array, utilize the `@for` directive to iterate through its elements.
 
 ---
+## Part 11: Using Maps and Templates - 30-January-24
+
+- **Creating a Map in Your Application**
+1. To manage data efficiently in your Angular application, create a Map as follows:
+    ```typescript
+    map = new Map<string, (RadioButtonClusterMetadata | TextInputMetadata | (RadioButtonClusterMetadata | TextInputMetadata)[])[]>();
+    ```
+- **Utilizing the Map in Your Library**
+1. Send this Map to your library and use the keys as accordion titles and the corresponding values as content for the expansion panels. This approach will help organize and display your data effectively.
+
+- **Accessing Keys and Values from the Map**
+1. To access the keys and values stored in the Map, use the following methods:
+     - Use `map.keys()` to retrieve all the keys in the Map.
+     - Use `map.get(key)` to obtain the values associated with a specific key.
+
+- **Creating a Flexible Template for Data Iteration**
+1. Create a template that allows you to iterate through data dynamically
+2. This template should have the flexibility to accept either headerMap or formMetaData. This approach will enhance code reusability and adaptability.
+
 
 I hope this step-by-step guide helps you understand and implement Angular libraries effectively. If you have any questions or need further assistance, please feel free to ask. Happy coding!

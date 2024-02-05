@@ -16,13 +16,14 @@ export class DemoComponent implements OnChanges, OnInit {
     allowLimitOverrides: false,
     contactNumber: "+xx xxx-xxx-xxxx"
   };
-  formMetaData: (RadioButtonClusterMetadata | TextInputMetadata | (RadioButtonClusterMetadata | TextInputMetadata)[])[] =
-    [this.clientMailOrderRadioButton(),
-     this.limitNumberOverrideRadioButton(),
+  formMetaData: (RadioButtonClusterMetadata | TextInputMetadata | (RadioButtonClusterMetadata | TextInputMetadata)[])[] = [this.clientMailOrderRadioButton(),
+                                                                                                                           this.limitNumberOverrideRadioButton(),
     [this.mailOrderBulkUpTextInput(), this.mailOrderBulkUpTextInput2()]];
+  headerMap: Map<string, (RadioButtonClusterMetadata | TextInputMetadata | (RadioButtonClusterMetadata | TextInputMetadata)[])[]> = new Map<string, (RadioButtonClusterMetadata | TextInputMetadata | (RadioButtonClusterMetadata | TextInputMetadata)[])[]>();
 
 
   ngOnInit(): void {
+    this.headerMap.set('Client Information', this.formMetaData);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -33,7 +34,7 @@ export class DemoComponent implements OnChanges, OnInit {
     const radioButtonOptionYes = new RadioButtonOption('Yes', true);
     const radioButtonOptionNo = new RadioButtonOption('No', false);
     return new RadioButtonClusterMetadata("Does client have mail order bulk up?",
-      "clint bulk up.",
+      "client bulk up.",
       true,
       ComponentType.RADIO_BUTTON,
       'mailOrderBulkUp',
@@ -45,7 +46,7 @@ export class DemoComponent implements OnChanges, OnInit {
     const radioButtonOptionYes = new RadioButtonOption('Yes', true);
     const radioButtonOptionNo = new RadioButtonOption('No', false);
     return new RadioButtonClusterMetadata("Is there a limit to the number of Overrides allowed?",
-      "clint bulk up.",
+      "client bulk up.",
       true,
       ComponentType.RADIO_BUTTON,
       'allowLimitOverrides',

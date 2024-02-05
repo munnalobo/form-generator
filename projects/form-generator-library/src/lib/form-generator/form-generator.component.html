@@ -1,15 +1,19 @@
-@for (data of formMetaData; track data) {
-  @if (!Array.isArray(data)) {
-    <ng-container *ngTemplateOutlet="dataTemplate; context: {componentData: data}"></ng-container>
-  } @else {
-    <div class="input-styles">
-      @for (input of convertToTypeArray(data); track input) {
-        <ng-container *ngTemplateOutlet="dataTemplate; context: {componentData: input}"></ng-container>
-      }
-    </div>
+@if (headerMap) {
+  @for (key of headerMap.keys(); track key) {
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ key }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-container *ngTemplateOutlet="contentTemplate; context: {contentData: headerMap.get(key)}"></ng-container>
+      </mat-expansion-panel>
+    </mat-accordion>
   }
+} @else {
+  <ng-container *ngTemplateOutlet="contentTemplate; context: {contentData: formMetaData}"></ng-container>
 }
-
 <ng-template #dataTemplate let-data="componentData">
   <lib-radio-button *ngIf="data.type === ComponentType.RADIO_BUTTON"
                     [overrideData]="overrideData"
@@ -17,4 +21,18 @@
   <lib-text-input *ngIf="data.type === ComponentType.TEXT_INPUT"
                   [textInputMetadata]="getDataWithType(data)">
   </lib-text-input>
+</ng-template>
+
+<ng-template #contentTemplate let-content="contentData">
+  @for (data of convertToTypeArray(content); track data) {
+    @if (!Array.isArray(data)) {
+      <ng-container *ngTemplateOutlet="dataTemplate; context: {componentData: data}"></ng-container>
+    } @else {
+      <div class="input-styles">
+        @for (input of convertToTypeArray(data); track input) {
+          <ng-container *ngTemplateOutlet="dataTemplate; context: {componentData: input}"></ng-container>
+        }
+      </div>
+    }
+  }
 </ng-template>

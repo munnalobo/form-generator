@@ -12,7 +12,7 @@ import {TextInputMetadata} from "../models/text-input-metadata";
 export class FormGeneratorComponent implements OnInit {
   @Input() formMetaData!: (RadioButtonClusterMetadata | TextInputMetadata | (RadioButtonClusterMetadata | TextInputMetadata)[])[];
   @Input() overrideData!: any;
-  display1 = true
+  @Input() headerMap: Map<string,(RadioButtonClusterMetadata | TextInputMetadata | (RadioButtonClusterMetadata | TextInputMetadata)[])[]>;
 
   protected readonly ComponentType = ComponentType;
   protected readonly Array = Array;
