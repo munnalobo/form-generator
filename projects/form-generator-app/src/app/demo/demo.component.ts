@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {AcceptableComponentTypes, RadioButtonClusterMetadata, TextInputMetadata} from "form-generator-library";
-import {RadioButtonOption} from "../../../../form-generator-library/src/lib/models/radio-button-option";
+import {AcceptableComponentTypes, RadioButtonClusterMetadata} from "form-generator-library";
+import {RadioButtonOption} from "form-generator-library";
+import {TextInputMetadata} from "form-generator-library";
 
 
 @Component({

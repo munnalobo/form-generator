@@ -1,0 +1,150 @@
+{
+  "id": 3,
+  "mode": "DRAFT",
+  "publishDate": "2030-12-15T00:00:30.226Z",
+  "mailOrderBulkUp": true,
+  "hasTestIdsSetUp": true,
+  "isTestIdsWorkInstructionsProvided": true,
+  "testIdsWorkInstructionsInfo": "Munna",
+  "idCardEntityName": "string",
+  "idCardPhoneNumber": "string",
+  "eligibilityEntityName": "CARE_MARK",
+  "eligibilityOtherEntityName": "string",
+  "newBornCoverage": "string",
+  "rxBIN": "string",
+  "rxPCN": "string",
+  "rxGRP": "string",
+  "isMedicalCoordinationOfBenefits": true,
+  "isOnlineCoordinationOfBenefits": true,
+  "alternateInsuranceEntityName": "CARE_MARK",
+  "alternateInsuranceWorkInstructionInfo": "string",
+  "planDesignInfo": "string",
+  "signedUpOTCBenefits": true,
+  "otcBenefitsType": "string",
+  "otcHealthSolutionsWorkInstructionInfo": "string",
+  "paperClaimsForNursingHomes": true,
+  "paperClaimsOption": "string",
+  "payDifferentInThirtyDays": true,
+  "payDifferentInThirtyDaysOptions": "string",
+  "deletedFlag": "N",
+  "contents": [
+    {
+      "id": 3,
+      "type": "string",
+      "title": "string",
+      "url": "string",
+      "mode": "DRAFT"
+    }
+  ],
+  "priorAuthorizations": [
+    {
+      "id": 5,
+      "contactType": "MEMBER",
+      "entityName": "CARE_MARK",
+      "workInstructionsInfo": "string",
+      "mode": "DRAFT",
+      "contactInfo": {
+        "id": 26,
+        "phoneNumber": "string",
+        "faxNumber": "string",
+        "description": "string",
+        "addressLine1": "string",
+        "addressLine2": "string",
+        "city": "string",
+        "state": "string",
+        "zipCode": "string",
+        "webSiteURL": "string"
+      }
+    },
+    {
+      "id": 6,
+      "contactType": "MEMBER",
+      "entityName": "CARE_MARK",
+      "workInstructionsInfo": "string",
+      "mode": "PUBLISH",
+      "contactInfo": {
+        "id": 27,
+        "phoneNumber": "string",
+        "faxNumber": "string",
+        "description": "string",
+        "addressLine1": "string",
+        "addressLine2": "string",
+        "city": "string",
+        "state": "string",
+        "zipCode": "string",
+        "webSiteURL": "string"
+      }
+    }
+  ],
+  "exceptionProcesses": [
+    {
+      "id": 9,
+      "mode": "DRAFT",
+      "exceptionType": "AFFORDABLE_CARE_ACT",
+      "entityName": "CARE_MARK",
+      "contactInfo": {
+        "id": 21,
+        "phoneNumber": "string",
+        "faxNumber": "string",
+        "description": "string",
+        "addressLine1": "string",
+        "addressLine2": "string",
+        "city": "string",
+        "state": "string",
+        "zipCode": "string",
+        "webSiteURL": "string"
+      }
+    },
+    {
+      "id": 10,
+      "mode": "DRAFT",
+      "exceptionType": "COMPOUND",
+      "entityName": "CARE_MARK",
+      "contactInfo": {
+        "id": 22,
+        "phoneNumber": "string",
+        "faxNumber": "string",
+        "description": "string",
+        "addressLine1": "string",
+        "addressLine2": "string",
+        "city": "string",
+        "state": "string",
+        "zipCode": "string",
+        "webSiteURL": "string"
+      }
+    },
+    {
+      "id": 11,
+      "mode": "DRAFT",
+      "exceptionType": "DAW",
+      "entityName": "CARE_MARK",
+      "contactInfo": {
+        "id": 23,
+        "phoneNumber": "string",
+        "faxNumber": "string",
+        "description": "string",
+        "addressLine1": "string",
+        "addressLine2": "string",
+        "city": "string",
+        "state": "string",
+        "zipCode": "string",
+        "webSiteURL": "string"
+      }
+    },
+    {
+      "id": 12,
+      "mode": "DRAFT",
+      "exceptionType": "TIER",
+      "entityName": "CARE_MARK",
+      "contactInfo": {
+        "id": 24,
+        "phoneNumber": "string",
+        "faxNumber": "string",
+        "description": "string",
+        "addressLine1": "string",
+        "addressLine2": "string",
+        "city": ""
+      }
+    }
+  ]
+}
