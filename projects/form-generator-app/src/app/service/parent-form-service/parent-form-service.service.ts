@@ -37,6 +37,30 @@ export class ParentFormServiceService {
     this.priorAuthorizationSectionServiceService.populateData();
   }
 
+  disableForm() {
+    this.flattenArray(this.getFormMetaData()).forEach(x => {
+      x.formControl.disable();
+    })
+  }
+  enableForm() {
+    this.flattenArray(this.getFormMetaData()).forEach(x => {
+      x.formControl.enable();
+    })
+  }
+
+  flattenArray(arr: any[]): any[] {
+    let result: any[] = [];
+
+    arr.forEach(item => {
+      if (Array.isArray(item)) {
+        result = result.concat(this.flattenArray(item));
+      } else {
+        result.push(item);
+      }
+    });
+
+    return result;
+  }
 }
 
 

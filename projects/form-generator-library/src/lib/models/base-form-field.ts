@@ -1,4 +1,5 @@
 import {FormControl} from "@angular/forms";
+ import {pairwise, startWith} from "rxjs";
 
 export class BaseFormField {
   name: string
@@ -45,12 +46,16 @@ export class BaseFormField {
 
     if (this.parentFormControl) {
       this.display = this.valueToBeChecked.includes(this.selectedValue)
-      this.parentFormControl.valueChanges.subscribe({
-        next: value => {
-          this.formControl.setValue(undefined);
-          this.display = this.valueToBeChecked.includes(value)
-        }
-      })
+      this.parentFormControl.valueChanges
+        .pipe(startWith(null), pairwise())
+        .subscribe({
+          next: ([previousValue, currentValue]: [any, any]) => {
+            this.display = this.valueToBeChecked.includes(currentValue)
+            if ((!this.parentFormControl.disabled) && (previousValue != currentValue)) {
+              this.formControl.setValue(undefined)
+            }
+          }
+        })
     }
     return this;
   }

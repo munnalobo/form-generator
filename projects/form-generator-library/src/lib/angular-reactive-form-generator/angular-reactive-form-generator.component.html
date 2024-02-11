@@ -1,5 +1,5 @@
 <mat-accordion>
-  <mat-expansion-panel *ngFor="let key of getKeys()" hideToggle>
+  <mat-expansion-panel *ngFor="let key of getKeys()" hideToggle [expanded]="true">
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{ key }}
