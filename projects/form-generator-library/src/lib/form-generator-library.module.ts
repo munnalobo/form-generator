@@ -15,10 +15,15 @@ import {
 } from "./angular-reactive-form-generator/angular-reactive-form-generator.component";
 import {MatIconModule} from "@angular/material/icon";
 import {MatFormFieldModule} from "@angular/material/form-field";
-
+import {FormRadioButtonComponent} from "./form-radio-button/form-radio-button.component";
+import {FormInputFieldComponent} from "./form-input-field/form-input-field.component";
 
 @NgModule({
-  declarations: [FormGeneratorLibraryComponent, FormGeneratorComponent, AngularReactiveFormGeneratorComponent],
+  declarations: [FormGeneratorLibraryComponent,
+                 FormGeneratorComponent,
+                 AngularReactiveFormGeneratorComponent,
+                 FormInputFieldComponent,
+                 FormRadioButtonComponent],
   imports: [MatButtonModule,
             MatRadioModule,
             FormsModule,
@@ -29,7 +34,11 @@ import {MatFormFieldModule} from "@angular/material/form-field";
             BrowserAnimationsModule,
             TextInputComponent,
             MatExpansionModule, ReactiveFormsModule, MatIconModule],
-  exports: [FormGeneratorLibraryComponent, FormGeneratorComponent, AngularReactiveFormGeneratorComponent]
+  exports: [FormGeneratorLibraryComponent,
+            FormGeneratorComponent,
+            AngularReactiveFormGeneratorComponent,
+            FormInputFieldComponent,
+            FormRadioButtonComponent]
 })
 export class FormGeneratorLibraryModule {
 }

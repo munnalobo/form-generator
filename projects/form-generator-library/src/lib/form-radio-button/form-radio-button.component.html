@@ -1,0 +1,11 @@
+<div *ngIf="isRadioButton() && individualComponent.display">
+  <label>{{ radioButtonMetaData.question }}</label>
+  <mat-radio-group [formControl]="radioButtonMetaData.formControl">
+    <div class="radio-options">
+      <mat-radio-button *ngFor="let key of getKeys( radioButtonMetaData.valueMap)"
+                        [value]="radioButtonMetaData.valueMap[key]"
+                        color="primary">{{ key }}
+      </mat-radio-button>
+    </div>
+  </mat-radio-group>
+</div>

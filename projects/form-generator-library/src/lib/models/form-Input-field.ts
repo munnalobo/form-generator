@@ -1,54 +1,10 @@
 import {ComponentType} from "./component-type";
-import {FormControl} from "@angular/forms";
+import {BaseFormField} from "./base-form-field";
 
-export class FormInputField {
-  name: string
-  question: string
-  label: string
-  textInputType: TextInputType
+export class FormInputField extends BaseFormField {
   type: ComponentType = ComponentType.TEXT_INPUT;
-  selectedValue: any;
-
-  parentFormControl: FormControl<any>;
-  valueToBeChecked: any;
-  display: boolean = true;
-
-  private readonly _formControl: FormControl<any>;
-
-  constructor(name: string,
-              question: string,
-              label: string,
-              textInputType: TextInputType,
-              selectedValue?: any,
-              parentFormControl?: FormControl<any>,
-              valueToBeChecked?: any) {
-
-    this.name = name;
-    this.question = question;
-    this.label = label;
-    this.textInputType = textInputType;
-    this.selectedValue = selectedValue;
-
-    this._formControl = new FormControl(this.name);
-    this._formControl.setValue(this.selectedValue);
-
-    this.parentFormControl = parentFormControl;
-    this.valueToBeChecked = valueToBeChecked;
-
-    if (this.parentFormControl) {
-      this.display = selectedValue === this.valueToBeChecked
-      this.parentFormControl.valueChanges.subscribe({
-        next: value => {
-          this._formControl.setValue(undefined);
-          this.display = value === this.valueToBeChecked
-        }
-      })
-    }
-  }
-
-  get formControl() {
-    return this._formControl
-  }
+  label: string
+  textInputType: TextInputType = TextInputType.TEXT;
 
   get hint(): string {
     return this.textInputType == TextInputType.PHONE_NUMBER
@@ -60,10 +16,23 @@ export class FormInputField {
                : this.textInputType == TextInputType.TEXT
                  ? 'Some Text Input'
                  : 'Some Text Input';
+  }
 
+  setLabel(value: string) {
+    this.label = value;
+    return this;
   }
 }
 
+export class PhoneNumberFormInputField extends FormInputField {
+  override textInputType: TextInputType = TextInputType.PHONE_NUMBER;
+}
+export class UrlFormInputField extends FormInputField {
+  override textInputType: TextInputType = TextInputType.URL;
+}
+export class EmailFormInputField extends FormInputField {
+  override textInputType: TextInputType = TextInputType.EMAIL;
+}
 
 export enum TextInputType {
   PHONE_NUMBER,

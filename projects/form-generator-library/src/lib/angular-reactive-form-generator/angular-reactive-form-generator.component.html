@@ -1,21 +1,43 @@
-<div *ngFor="let individualComponent of someStaticForm">
-  <div *ngIf="(individualComponent.type === RADIO_BUTTON) && individualComponent.display">
-    <label>{{ radioButtonTypeConvert(individualComponent).question }}</label>
-    <mat-radio-group [formControl]="radioButtonTypeConvert(individualComponent).formControl">
-      <div class="radio-options">
-        <mat-radio-button *ngFor="let key of getKeys( radioButtonTypeConvert(individualComponent).valueMap)"
-                          [value]="radioButtonTypeConvert(individualComponent).valueMap[key]"
-                          color="primary">{{ key }}
-        </mat-radio-button>
-      </div>
-    </mat-radio-group>
-  </div>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let key of getKeys()" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ key }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div *ngFor="let formControl of formMetaDataWithSections.get(key)">
+      <ng-container
+        *ngTemplateOutlet="formArrayTemplate; context: {$implicit: formControl, data: formControl}">
+      </ng-container>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
 
-  <div *ngIf="(individualComponent.type === TEXT_INPUT) && individualComponent.display">
-    <mat-form-field>
-      <mat-label>{{ textInputTypeConvert(individualComponent).label }}</mat-label>
-      <mat-hint>{{ textInputTypeConvert(individualComponent).hint }}</mat-hint>
-      <input [formControl]="textInputTypeConvert(individualComponent).formControl" matInput>
-    </mat-form-field>
+
+<div *ngIf="formMetaDataWithSections===undefined">
+  <div *ngFor="let formControl of formMetaData">
+    <ng-container
+      *ngTemplateOutlet="formArrayTemplate; context: {$implicit: formControl, data: formControl}">
+    </ng-container>
   </div>
 </div>
+<ng-template #formArrayTemplate let-formControlData="data">
+  <div *ngIf="isArray(formControlData)" class="group-things">
+    <div *ngFor="let individualControl of asArray(formControlData)">
+      <ng-container
+        *ngTemplateOutlet="formArrayTemplate; context: {$implicit: individualControl, data: individualControl}">
+      </ng-container>
+    </div>
+  </div>
+
+  <div *ngIf="!isArray(formControlData)">
+    <ng-container
+      *ngTemplateOutlet="formTemplate; context: {$implicit: formControlData, data: formControlData}">
+    </ng-container>
+  </div>
+</ng-template>
+
+<ng-template #formTemplate let-individualComponent="data">
+  <lib-form-radio-button [individualComponent]="individualComponent"></lib-form-radio-button>
+  <lib-form-input-field [individualComponent]="individualComponent"></lib-form-input-field>
+</ng-template>

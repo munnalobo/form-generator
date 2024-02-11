@@ -1,0 +1,6 @@
+<p>parent-form works!</p>
+<lib-angular-reactive-form-generator [formMetaDataWithSections]="parentFormServiceService.getFormMetaDataWithSections()"
+                                     [formMetaData]="parentFormServiceService.getFormMetaData()"
+>
+</lib-angular-reactive-form-generator>
+<button (click)="getData()" color="primary" mat-raised-button> print form</button>

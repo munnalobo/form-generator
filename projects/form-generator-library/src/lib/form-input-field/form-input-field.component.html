@@ -1,0 +1,8 @@
+<div *ngIf="isTextInput() && individualComponent.display">
+  <p>{{ formMetadataMetaData.question }}</p>
+  <mat-form-field>
+    <mat-label>{{ formMetadataMetaData.label }}</mat-label>
+    <mat-hint>{{ formMetadataMetaData.hint }}</mat-hint>
+    <input [formControl]="formMetadataMetaData.formControl" matInput>
+  </mat-form-field>
+</div>

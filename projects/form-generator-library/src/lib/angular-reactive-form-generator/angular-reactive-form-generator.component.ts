@@ -1,40 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {ComponentType} from "../models/component-type";
-import {FormRadioButtonCluster} from "../models/form-radio-button-cluster";
-import {FormGroup} from "@angular/forms";
-import {FormInputField, TextInputType} from "../models/form-Input-field";
-
-let caremarkClientOtherValueMap = {
-  CareMark: "CARE_MARK",
-  Client: "CLIENT",
-  Other: "OTHER",
-};
-let simpleYesNo = {
-  Yes: true,
-  No: false,
-};
-
-let eligibilityEntityName = new FormRadioButtonCluster("priorAuthorizations_entityName",
-  "Who is handling Prior Authorization?",
-  caremarkClientOtherValueMap,
-  'OTHER');
-
-let memberAndContactSame = new FormRadioButtonCluster("priorAuthorizations_handler",
-  "Who is handling Prior Authorization?",
-  simpleYesNo,
-  undefined,
-  eligibilityEntityName.formControl,
-  'CLIENT');
-
-let priorAuthCaremarkWorkInstructionUrl = new FormInputField(
-  'priorAuth_caremarkWorkInstructionUrl',
-  '',
-  'Work Instructions URL (optional)',
-  TextInputType.URL,
-  undefined,
-  eligibilityEntityName.formControl,
-  'CARE_MARK'
-)
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'lib-angular-reactive-form-generator',
@@ -42,35 +6,25 @@ let priorAuthCaremarkWorkInstructionUrl = new FormInputField(
   styleUrl: './angular-reactive-form-generator.component.css'
 })
 export class AngularReactiveFormGeneratorComponent implements OnInit {
-  dataFromBackend = {
-    eligibilityEntityName: 'CLIENT',
-    memberAndContactSame: false
+  @Input() formMetaData: any;
+  @Input() formMetaDataWithSections: Map<any, any>;
+  @Input() dataFromBackend: any;
+  @Input() individualForm: any;
+  constructor() {
   }
-  someFormGroup = new FormGroup({
-    eligibilityEntityName: eligibilityEntityName.formControl,
-    memberAndContactSame: memberAndContactSame.formControl
-  })
-  someStaticForm = [
-    eligibilityEntityName, memberAndContactSame,
-    priorAuthCaremarkWorkInstructionUrl
-  ]
-  RADIO_BUTTON: ComponentType = ComponentType.RADIO_BUTTON;
-  TEXT_INPUT: ComponentType = ComponentType.TEXT_INPUT;
 
   ngOnInit(): void {
-    // this.someFormGroup.patchValue(this.dataFromBackend);
   }
 
-  getKeys(someStaticForm) {
-    return Object.keys(someStaticForm);
+  isArray(value: any) {
+    return value instanceof Array;
   }
 
-  radioButtonTypeConvert(individualComponent: FormRadioButtonCluster | FormInputField) {
-    return individualComponent as FormRadioButtonCluster;
-
+  asArray(value: any) {
+    return value as [];
   }
-  textInputTypeConvert(individualComponent: FormRadioButtonCluster | FormInputField) {
-    return individualComponent as FormInputField;
 
+  getKeys(){
+    return Array.from(this.formMetaDataWithSections.keys())
   }
 }
