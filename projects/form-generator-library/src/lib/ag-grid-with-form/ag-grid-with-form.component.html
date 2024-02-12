@@ -1,0 +1,8 @@
+<ag-grid-angular
+  *ngIf="isAgGrid() && individualComponent.display"
+  [class]="themeClass"
+  [columnDefs]="formAgGrid.colDefs"
+  [rowData]="formAgGrid.selectedValue"
+  style="width: 40%; height: 103px;">
+</ag-grid-angular>
+

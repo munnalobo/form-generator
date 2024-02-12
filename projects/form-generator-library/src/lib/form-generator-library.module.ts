@@ -17,12 +17,18 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {FormRadioButtonComponent} from "./form-radio-button/form-radio-button.component";
 import {FormInputFieldComponent} from "./form-input-field/form-input-field.component";
+import {FormSelectDropdownComponent} from "./form-select-dropdown/form-select-dropdown.component";
+import {MatSelectModule} from "@angular/material/select";
+import {AgGridWithFormComponent} from "./ag-grid-with-form/ag-grid-with-form.component";
+import {AgGridAngular} from "ag-grid-angular";
 
 @NgModule({
   declarations: [FormGeneratorLibraryComponent,
                  FormGeneratorComponent,
                  AngularReactiveFormGeneratorComponent,
                  FormInputFieldComponent,
+                 AgGridWithFormComponent,
+                 FormSelectDropdownComponent,
                  FormRadioButtonComponent],
   imports: [MatButtonModule,
             MatRadioModule,
@@ -33,11 +39,17 @@ import {FormInputFieldComponent} from "./form-input-field/form-input-field.compo
             RadioButtonComponent,
             BrowserAnimationsModule,
             TextInputComponent,
-            MatExpansionModule, ReactiveFormsModule, MatIconModule],
+            MatExpansionModule,
+            ReactiveFormsModule,
+            MatIconModule,
+            MatSelectModule,
+            AgGridAngular],
   exports: [FormGeneratorLibraryComponent,
             FormGeneratorComponent,
             AngularReactiveFormGeneratorComponent,
             FormInputFieldComponent,
+            AgGridWithFormComponent,
+            FormSelectDropdownComponent,
             FormRadioButtonComponent]
 })
 export class FormGeneratorLibraryModule {

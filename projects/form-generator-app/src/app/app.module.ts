@@ -7,6 +7,7 @@ import {DemoComponent} from './demo/demo.component';
 import {FormGeneratorLibraryModule} from "form-generator-library";
 import {ParentFormComponent} from "./parrent-form/parent-form.component";
 import {MatButtonModule} from "@angular/material/button";
+import {AgGridModule} from "ag-grid-angular";
 
 @NgModule({
   declarations: [
@@ -19,6 +20,8 @@ import {MatButtonModule} from "@angular/material/button";
     AppRoutingModule,
     FormGeneratorLibraryModule,
     MatButtonModule,
+    FormGeneratorLibraryModule,
+    AgGridModule
   ],
   providers: [],
   bootstrap: [AppComponent]

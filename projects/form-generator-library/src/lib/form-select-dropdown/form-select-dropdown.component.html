@@ -1,0 +1,6 @@
+<mat-form-field *ngIf="isDropdown() && individualComponent.display"  >
+  <mat-label> {{ individualComponent.question }}</mat-label>
+  <mat-select [formControl]="individualComponent.formControl">
+    <mat-option *ngFor="let key of getKeys()" [value]="key">{{ getDisplayValue(key) }}</mat-option>
+  </mat-select>
+</mat-form-field>

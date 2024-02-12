@@ -1,5 +1,5 @@
 <mat-accordion>
-  <mat-expansion-panel *ngFor="let key of getKeys()" hideToggle [expanded]="true">
+  <mat-expansion-panel *ngFor="let key of getKeys()" [expanded]="true" hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{ key }}
@@ -40,4 +40,6 @@
 <ng-template #formTemplate let-individualComponent="data">
   <lib-form-radio-button [individualComponent]="individualComponent"></lib-form-radio-button>
   <lib-form-input-field [individualComponent]="individualComponent"></lib-form-input-field>
+  <lib-form-select-dropdown [individualComponent]="individualComponent"></lib-form-select-dropdown>
+  <lib-ag-grid-with-form [individualComponent]="individualComponent"></lib-ag-grid-with-form>
 </ng-template>

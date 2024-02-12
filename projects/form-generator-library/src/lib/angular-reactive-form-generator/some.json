@@ -38,40 +38,21 @@
   ],
   "priorAuthorizations": [
     {
-      "id": 5,
       "contactType": "MEMBER",
-      "entityName": "CARE_MARK",
+      "entityName": "CLIENT",
       "workInstructionsInfo": "string",
-      "mode": "DRAFT",
       "contactInfo": {
-        "id": 26,
         "phoneNumber": "string",
         "faxNumber": "string",
-        "description": "string",
-        "addressLine1": "string",
-        "addressLine2": "string",
-        "city": "string",
-        "state": "string",
-        "zipCode": "string",
         "webSiteURL": "string"
       }
     },
     {
-      "id": 6,
-      "contactType": "MEMBER",
+      "contactType": "PROVIDER",
       "entityName": "CARE_MARK",
-      "workInstructionsInfo": "string",
-      "mode": "PUBLISH",
       "contactInfo": {
-        "id": 27,
         "phoneNumber": "string",
         "faxNumber": "string",
-        "description": "string",
-        "addressLine1": "string",
-        "addressLine2": "string",
-        "city": "string",
-        "state": "string",
-        "zipCode": "string",
         "webSiteURL": "string"
       }
     }
