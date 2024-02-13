@@ -1,4 +1,4 @@
-import {AbstractControl, FormControl, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, ValidationErrors, ValidatorFn} from "@angular/forms";
 import {pairwise, startWith} from "rxjs";
 
 export class BaseFormField {
@@ -9,7 +9,19 @@ export class BaseFormField {
   formControl: FormControl<any>;
   display: boolean = true;
   valueToBeChecked: any[];
-  validators: (((control: AbstractControl) => (ValidationErrors | null)) | ValidatorFn)[]
+  validators: (((control: AbstractControl) => (ValidationErrors | null)) | ValidatorFn)[];
+
+  get formControlError() {
+    let error: string;
+    if (this.formControl.errors) {
+      error = this.formControl.errors['minlength']
+              ? 'Minimum length required is: ' + this.formControl.errors['minlength']['requiredLength']
+              : this.formControl.errors['required']
+                ? 'This field is Required '
+                : undefined;
+    }
+    return error;
+  }
 
   setName(value: string) {
     this.name = value;
