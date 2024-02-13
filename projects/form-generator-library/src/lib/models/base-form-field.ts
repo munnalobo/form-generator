@@ -1,5 +1,5 @@
-import {FormControl} from "@angular/forms";
- import {pairwise, startWith} from "rxjs";
+import {AbstractControl, FormControl, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
+import {pairwise, startWith} from "rxjs";
 
 export class BaseFormField {
   name: string
@@ -9,9 +9,15 @@ export class BaseFormField {
   formControl: FormControl<any>;
   display: boolean = true;
   valueToBeChecked: any[];
+  validators: (((control: AbstractControl) => (ValidationErrors | null)) | ValidatorFn)[]
 
   setName(value: string) {
     this.name = value;
+    return this;
+  }
+
+  setValidators(...value: (((control: AbstractControl) => (ValidationErrors | null)) | ValidatorFn)[]) {
+    this.validators = value;
     return this;
   }
 
@@ -41,7 +47,7 @@ export class BaseFormField {
   }
 
   build() {
-    this.formControl = new FormControl(this.name);
+    this.formControl = new FormControl(this.name, this.validators);
     this.formControl.setValue(this.selectedValue)
 
     if (this.parentFormControl) {

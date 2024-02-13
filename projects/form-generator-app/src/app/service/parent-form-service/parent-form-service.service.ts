@@ -26,11 +26,19 @@ export class ParentFormServiceService {
   }
 
   getFinalJson() {
+    this.validateForm();
+
     this.parentForm = new Map([...Array.from(this.priorAuthorizationSectionServiceService.getFormData().entries())]);
     this.parentForm.forEach((value, key) => {
       this.finalJson.set(key, value.value)
     })
     console.log('this.parentForm', this.finalJson)
+  }
+
+  private validateForm() {
+    this.flattenArray(this.getFormMetaData()).filter(x => x.display).forEach(x => {
+      console.log(x.name, " is ", x.formControl.valid)
+    })
   }
 
   populateData() {
